@@ -22,6 +22,7 @@
   "scripts": {
     "build:dev": "webpack --devtool inline-source-map --mode development",
     "build:prd": "webpack",
+    "build:probe": "ts-node ./src/tools/generateBaseline.ts",
     "changelog:last": "conventional-changelog -n ./changelog.config.cjs -r 2",
     "changelog:preview": "conventional-changelog -n ./changelog.config.cjs -u",
     "changelog:update": "conventional-changelog -n ./changelog.config.cjs -i CHANGELOG.md -s -r 0",
@@ -38,6 +39,7 @@
     "release": "release-it",
     "test": "playwright test --project tests",
     "test:prepare": "playwright test --project prepare --headed",
+    "test:probe": "npm run build:probe && node --test test/compat-probe.test.cjs",
     "update-models-attributes": "ts-node ./src/tools/updateModelsAttributes.ts",
     "update-module-id": "ts-node ./src/tools/updateModuleID.ts",
     "wa-source:clean": "shx rm -rf wa-source",
